@@ -3,6 +3,7 @@ import React from 'react';
 
 export default class App extends React.Component {
   // your Javascript goes here
+  //If you want to initialize the state inside of your Component, you must use a Constructor!
   constructor(props) {
     super(props);
     this.state = {
@@ -12,18 +13,21 @@ export default class App extends React.Component {
       output: "",
       result: 0,
     };
-    this.onChange = this.onChange.bind(this) //GOOGLE WHAT THIS MEANS!
+    //If you want to grab "this" from a function, and it does not have () then you must BIND IT: See below for examples!
+    this.onChange = this.onChange.bind(this)
     this.handleClick = this.handleClick.bind(this) 
   }
-  
+  //We are using onChange as a generic fits all function that will perform the onChange event binding for
+  //the following elements: balance, rate, term, and output.
   onChange(e){ 
     this.setState({ [e.target.name] : e.target.value })
 }  
-
+//The handleClick function is a event that will run once the button called "submit" is clicked. 'e' stands for event in this case.
   handleClick(e) {
-    e.preventDefault(); //Stops the event at this point
-    var result = this.calculate();
+    e.preventDefault(); //Stops the event at this point, this prevents the Reset of the actual event that is taking place.
+    var result = this.calculate(); //It's important to run 'this.calculate' without arguments because it already contains the state of each element in the calculate function itself.
     console.log(result);
+    //the setState portion will update the state of the 'output' element by using the string mentioned below along with the information stored in the variable called result
     this.setState(
       {output : `Your Monthly Payment Amount is: ${result}`}
     )
@@ -33,6 +37,7 @@ export default class App extends React.Component {
   
   calculate(balance, rate, term) {
     //var payment = balance * rate * term; //USED FOR TESTING PURPOSES ONLY
+    //Lines 41-43 are grabbing the actual state of each variable which means it will grab the actual numbers that are inputted/selected by the user.
     balance = this.state.balance;
     rate = this.state.rate;
     term = this.state.term;
@@ -44,8 +49,7 @@ export default class App extends React.Component {
     //then set state to bind the result to the div with an id of 'output' as a string like this: $1945.09 is your payment.
     return payment;
    }
-    
-
+    //All the information inside of render will get outputted on the initialRender and will take on the initial state's assigned in this.state within the constructor.
   render() {
     return (
     <div className='container'>
@@ -74,7 +78,7 @@ export default class App extends React.Component {
   }
 
 }
-
+//this contains the explicit format of each onChange for each div element
   // onbalanceChange(e) {
   //   this.setState({ balance: e.target.value });
   // }
