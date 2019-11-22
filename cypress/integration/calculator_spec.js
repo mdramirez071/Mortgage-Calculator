@@ -17,19 +17,3 @@ describe('End-To-End Test for Mortgage Calculator', () => {
         cy.get(result => expect(result).to.contain('738.13', 'Expected mortgage payment didn\'t match'))
     })
 })
-
-
-// describe('My First Test', () => {
-//     it('Gets, types and assets', () => {
-//         cy.visit('https://example.cypress.io')
-
-//         cy.contains('type').click()
-//         // Should redirect to a new URL that includes '/commands/actions/'
-//         cy.url().should('include', '/commands/actions')
-
-//         //Get an input, type into it and verify that the value has been updated.
-//         cy.get('.action-email')
-//         .type('fake@email.com')
-//         .should('have.value', 'fake@email.com')
-//     })
-// })
