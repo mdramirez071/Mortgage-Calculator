@@ -10,7 +10,7 @@ export default class App extends React.Component {
       balance: "",
       rate: "",
       term: "",
-      output: "",
+      output: 0,
       result: 0,
     };
     //If you want to grab "this" from a function, and it does not have () then you must BIND IT: See below for examples!
