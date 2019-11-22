@@ -13,12 +13,8 @@ describe('End-To-End Test for Mortgage Calculator', () => {
 
         //Clicks Submit button to Calculate Mortgage Amount
         cy.contains('Submit').click()
-        //cy.evaluate(() => document.querySelector('#output').innerHTML)
+        //Checks if final Mortgage amount is correct
         cy.get(result => expect(result).to.contain('738.13', 'Expected mortgage payment didn\'t match'))
-        //cy.wait('#output')
-
-        //Checks if Calculated Mortgage Amount is Correct
-        //cy.get('#output').should('have.value', '738.13')
     })
 })
 
